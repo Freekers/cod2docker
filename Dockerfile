@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:focal
 
 ARG cod2_version="1_0"
 ARG libcod_url="https://github.com/voron00/libcod"
