@@ -4,7 +4,7 @@ ARG cod2_version="1_0"
 ARG libcod_url="https://github.com/voron00/libcod"
 ARG libcod_commit
 ARG libcod_mysql="0"
-ARG libcod_sqlite="1"
+ARG libcod_sqlite="0"
 
 # cod2 and libcod requirements 
 RUN dpkg --add-architecture i386 \
