@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:bionic
 
 ARG cod2_version="1_0"
 ARG libcod_url="https://github.com/voron00/libcod"
