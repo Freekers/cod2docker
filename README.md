@@ -1,6 +1,6 @@
 # cod2docker
 
-Fork of lonsofore/cod2 - COD2 1.0 with voron00's libcod, including SQLite support. Based on Ubuntu Focal.
+Fork of lonsofore/cod2 - COD2 1.0 using voron00's libcod. Based on Ubuntu Focal (20.04)
 
 Very specific image for my personal needs. Pushing it to Docker Hub because 'why not'.
 
