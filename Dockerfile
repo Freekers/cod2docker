@@ -34,7 +34,7 @@ RUN cd /cod2 \
 WORKDIR /cod2
 
 # check server info every 5 seconds 3 times
-HEALTHCHECK --interval=5s --timeout=3s --retries=3 CMD if [ -z "$(echo -e '\xff\xff\xff\xffgetinfo' | nc -w 1 -u 127.0.0.1 ${CHECK_PORT})" ]; then exit 1; else exit 0; fi
+HEALTHCHECK --interval=5s --timeout=3s --retries=3 CMD if [ -z "$(echo -e '\xff\xff\xff\xffgetinfo' | nc -w 1 -u ${CHECK_IP} ${CHECK_PORT})" ]; then exit 1; else exit 0; fi
 
 # preload libcod
 # plan to unload it
