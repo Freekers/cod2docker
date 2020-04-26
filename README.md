@@ -25,8 +25,9 @@ services:
       - /opt/cod2/main:/cod2/main
       - /opt/cod2/main/games_mp.log:/cod2/.callofduty2/main/games_mp.log
     environment:
-     PARAMS: "+set fs_homepath /cod2/.callofduty2 +set dedicated 2 +set net_port 28960 +set sv_cracked 1 +exec server.cfg"
+     PARAMS: "+set fs_homepath /cod2/.callofduty2 +set dedicated 2 +set net_ip 123.123.123.123 +set net_port 28960 +set sv_cracked 1 +exec server.cfg"
      CHECK_PORT: 28960
+     CHECK_PORT: 123.123.123.123
 ```
 And replace paths & environment parameters accordingly.
 
