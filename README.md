@@ -18,8 +18,6 @@ services:
     image: freekers/docker-cod2_1.0
     container_name: cod2
     restart: always
-    stdin_open: true
-    tty: true
     network_mode: host
     volumes:
       - /opt/cod2/main:/cod2/main
