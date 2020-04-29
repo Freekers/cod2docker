@@ -12,7 +12,7 @@ RUN dpkg --add-architecture i386 \
     && apt-get install -y \
         g++-multilib \
         libstdc++5:i386 \
-        nmap \
+        socat \
         git \
     && if [ "$libcod_mysql" != "0" ]; then apt-get install -y libmysqlclient-dev:i386; fi \
     && if [ "$libcod_sqlite" != "0" ]; then apt-get install -y libsqlite3-dev:i386; fi \
@@ -34,7 +34,7 @@ RUN cd /cod2 \
 WORKDIR /cod2
 
 # check server info every 30 seconds
-HEALTHCHECK --interval=30s --timeout=5s --retries=5 CMD if [ -z "$(echo -e '\xff\xff\xff\xffgetinfo' | ncat -u ${CHECK_IP} ${CHECK_PORT})" ]; then exit 1; else exit 0; fi
+HEALTHCHECK --interval=30s --timeout=5s --retries=5 CMD if [ -z "$(echo -e '\xff\xff\xff\xffgetinfo' | socat - udp:${CHECK_IP}:${CHECK_PORT})" ]; then exit 1; else exit 0; fi
 
 # preload libcod
 # plan to unload it
