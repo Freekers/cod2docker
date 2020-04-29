@@ -12,7 +12,7 @@ RUN dpkg --add-architecture i386 \
     && apt-get install -y \
         g++-multilib \
         libstdc++5:i386 \
-        ncat \
+        nmap \
         git \
     && if [ "$libcod_mysql" != "0" ]; then apt-get install -y libmysqlclient-dev:i386; fi \
     && if [ "$libcod_sqlite" != "0" ]; then apt-get install -y libsqlite3-dev:i386; fi \
