@@ -29,6 +29,30 @@ services:
 ```
 And replace paths & environment parameters accordingly.
 
+## Healthcheck and Server Restarts
+
+There are two types of restarts:
+
+1. If the container would stop for some reason (e.g. ShutdownGame) - Docker will restart it automatically ('restart' part in docker-compose.yml)
+
+1. If for some reason the container would still run, but the `healthcheck` fails (e.g. the CoD2 server process is fronzen), the Docker container will be marked as 'unhealthy'. However, in this case, the container wouldn't be restarted automatically by Docker. For this you need an additional Docker image called `autoheal`. Here's a docker-compose.yml example for autoheal:
+```
+    version: '3.7'
+      services:
+        autoheal:
+          image: willfarrell/autoheal
+          container_name: autoheal
+          restart: always
+          volumes:
+           - /var/run/docker.sock:/var/run/docker.sock
+          environment:
+           AUTOHEAL_CONTAINER_LABEL: "all"
+```
+AUTOHEAL_CONTAINER_LABEL with value "all" means that all unhealthy containers would be restarted.
+
+If you change the default server port, i.e. 28960, then make sure the `CHECK_PORT` in your Docker run command or docker-compose matches your `net_port`.
+
+If you change `net_ip`, then make sure the `CHECK_IP` in your Docker run command or docker-compose matches your `net_ip`.
 
 # Support
 
