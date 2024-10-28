@@ -38,7 +38,7 @@ RUN git clone --depth 1 ${libcod_url} /cod2/libcod \
 WORKDIR /cod2
 
 # Healthcheck to verify server status
-HEALTHCHECK --interval=30s --timeout=5s --retries=5 CMD ["/bin/sh", "-c", "if [ -z \"$(echo -e '\xff\xff\xff\xffgetinfo' | socat - udp:${CHECK_IP}:${CHECK_PORT})\" ]; then exit 1; else exit 0; fi"]
+HEALTHCHECK --interval=30s --timeout=5s --retries=5 CMD if [ -z "$(echo -e '\xff\xff\xff\xffgetinfo' | socat - udp:${CHECK_IP}:${CHECK_PORT})" ]; then exit 1; else exit 0; fi
 
 # Preload libcod, unload it, and start the server
 ENTRYPOINT ["/bin/sh", "-c", "echo '/cod2/libcod.so' > /etc/ld.so.preload && (sleep 15; echo '' > /etc/ld.so.preload) & /cod2/cod2_lnxded $PARAMS"]
